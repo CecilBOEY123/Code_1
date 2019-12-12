@@ -1,18 +1,30 @@
 Invader player = new Invader(200,200);
 
+ArrayList<Invader> vaders;
 
 void setup() 
 {
 size(600, 600); 
 noStroke(); 
+
+vaders = new ArrayList<Invader>();
 }
 
 void draw() 
 { 
   background(255);
   
+   for (int i=0; i<vaders.size(); i++) 
+   {
+    Invader player=vaders.get(i);
     player.display();
     player.move();
+  }
+  if(frameCount%60 == 0) 
+  {
+    vaders.add(new Invader(random(80,510),random(110,490)));
+  }
+
 }
 
 class Invader {
